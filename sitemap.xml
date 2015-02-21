@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-<<<<<<< HEAD
     <loc>http://www.jsenv.com/blog/2012/07/22/intro/</loc>
     <lastmod>2012-07-22T08:23:00-03:00</lastmod>
   </url>
@@ -28,33 +27,5 @@
   <url>
     <loc>http://www.jsenv.com/sobre/</loc>
     <lastmod>2015-02-21T09:00:55-02:00</lastmod>
-=======
-    <loc>http://www.jsenv.com jsenv.com/jsenv/blog/2012/07/22/intro/</loc>
-    <lastmod>2012-07-22T08:23:00-03:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/archives/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/blog/archives/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/blog/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/projetos/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jsenv.com jsenv.com/jsenv/sobre/</loc>
-    <lastmod>2015-02-19T18:02:40-02:00</lastmod>
->>>>>>> 3f67dd24e39ba22d39cf4eab05cdb7d31ff807bf
   </url>
 </urlset>
