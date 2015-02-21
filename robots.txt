@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: 
 
+<<<<<<< HEAD
 Sitemap: http://www.jsenv.com/sitemap.xml 
+=======
+Sitemap: http://www.jsenv.com jsenv.com/jsenv/sitemap.xml 
+>>>>>>> 3f67dd24e39ba22d39cf4eab05cdb7d31ff807bf

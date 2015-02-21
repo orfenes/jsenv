@@ -2,10 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: self | JS env]]></title>
+<<<<<<< HEAD
   <link href="http://www.jsenv.com/blog/categories/self/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
   <updated>2015-02-21T09:00:55-02:00</updated>
   <id>http://www.jsenv.com/</id>
+=======
+  <link href="http://www.jsenv.com jsenv.com/jsenv/blog/categories/self/atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com jsenv.com/jsenv/"/>
+  <updated>2015-02-19T18:02:40-02:00</updated>
+  <id>http://www.jsenv.com jsenv.com/jsenv/</id>
+>>>>>>> 3f67dd24e39ba22d39cf4eab05cdb7d31ff807bf
   <author>
     <name><![CDATA[Guilherme Moura Nascimento]]></name>
     
@@ -15,9 +22,15 @@
   
   <entry>
     <title type="html"><![CDATA[Intro]]></title>
+<<<<<<< HEAD
     <link href="http://www.jsenv.com/blog/2012/07/22/intro/"/>
     <updated>2012-07-22T08:23:00-03:00</updated>
     <id>http://www.jsenv.com/blog/2012/07/22/intro</id>
+=======
+    <link href="http://www.jsenv.com jsenv.com/jsenv/blog/2012/07/22/intro/"/>
+    <updated>2012-07-22T08:23:00-03:00</updated>
+    <id>http://www.jsenv.com jsenv.com/jsenv/blog/2012/07/22/intro</id>
+>>>>>>> 3f67dd24e39ba22d39cf4eab05cdb7d31ff807bf
     <content type="html"><![CDATA[<p>Testing!</p>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin, massa eu vestibulum laoreet, nibh ante vulputate lorem, ac lobortis ante tellus eu mi. Duis sem nisi, luctus at feugiat eget, fringilla ut tellus. Nam a molestie justo. Sed pulvinar est vitae tellus semper tincidunt. Fusce euismod luctus lacus nec placerat. Mauris rutrum scelerisque nulla ut tempor. Nunc porttitor posuere mi, aliquet vehicula lorem feugiat in. Ut ut fermentum risus. Aliquam tincidunt ultricies ante sit amet bibendum. Cras nec sapien odio. Duis posuere congue sem, at congue massa faucibus at.</p>
