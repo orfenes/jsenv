@@ -4,7 +4,11 @@
   <title><![CDATA[JS env]]></title>
   <link href="http://www.jsenv.com/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
+<<<<<<< HEAD
   <updated>2015-02-23T19:04:18-03:00</updated>
+=======
+  <updated>2015-02-21T16:17:22-02:00</updated>
+>>>>>>> e00d5da52a1006a8418c96812bda218b1c0c5d0a
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[Guilherme Moura Nascimento]]></name>
@@ -13,6 +17,7 @@
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
+<<<<<<< HEAD
   <entry>
     <title type="html"><![CDATA[Como Sincronizar Um Fork Com Seu Repositório Original]]></title>
     <link href="http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
@@ -457,4 +462,6 @@ Confira nos exemplos abaixo:</p>
 ]]></content>
   </entry>
   
+=======
+>>>>>>> e00d5da52a1006a8418c96812bda218b1c0c5d0a
 </feed>
