@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Prototipos, | JS env]]></title>
   <link href="http://www.jsenv.com/blog/categories/prototipos/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
-  <updated>2015-02-24T00:22:25-03:00</updated>
+  <updated>2015-02-24T00:56:49-03:00</updated>
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[Guilherme Moura Nascimento]]></name>
@@ -19,6 +19,9 @@
     <updated>2015-02-24T00:01:27-03:00</updated>
     <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
     <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de inicio foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
+
+<!-- more -->
+
 
 <h2>Protótipos</h2>
 
