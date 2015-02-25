@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[JS env]]></title>
+  <link href="http://www.jsenv.com/atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com/"/>
+  <updated>2015-02-24T10:16:57-03:00</updated>
+  <id>http://www.jsenv.com/</id>
+  <author>
+    <name><![CDATA[Guilherme Moura Nascimento]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Classes Em Javascript]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
+    <updated>2015-02-24T00:01:27-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
+    <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de inicio foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
+
+<!-- more -->
+
+
+<h2>Protótipos</h2>
+
+<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo.</p>
+
+<figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//criando objeto e herdando de Date.prototype</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span><span class='line'><span class="c1">//utilizando método do objeto new Date() que foi herdada pelo objeto data</span>
+</span><span class='line'><span class="nx">data</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O objeto data herda as propriedades de Date.prototype e de Object.prototype, essa serie de encadeamento nos chamamos de encandeamento de protótipos.</p>
+
+<h2>Criando classes em JavaScript</h2>
+
+<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
+
+<figure class='code'><figcaption><span>classe pessoa</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">//classe em Java</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pessoa</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c1">//atributos    </span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">nome</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">int</span> <span class="n">idade</span><span class="o">;</span>
+</span><span class='line'>  <span class="c1">//construtor</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Pessoa</span><span class="o">(</span><span class="n">String</span> <span class="n">nome</span><span class="o">,</span> <span class="kt">int</span> <span class="n">idade</span><span class="o">){</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">nome</span> <span class="o">=</span> <span class="n">nome</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">idade</span> <span class="o">=</span> <span class="n">idade</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="c1">//metodos</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">falar</span><span class="o">(){</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;Meu nome é &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">nome</span> <span class="o">+</span> <span class="s">&quot; e minha idade é &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">idade</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">andar</span><span class="o">(){</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">nome</span> <span class="o">+</span> <span class="s">&quot; esta andando&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</span><span class='line'>      <span class="n">Pessoa</span> <span class="n">meuObjeto</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Pessoa</span><span class="o">(</span><span class="s">&quot;Rodrigo&quot;</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">meuObjeto</span><span class="o">.</span><span class="na">andar</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">meuObjeto</span><span class="o">.</span><span class="na">falar</span><span class="o">();</span>
+</span><span class='line'>      
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>classe pessoa</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//funçao construtora</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">Pessoa</span> <span class="p">(</span><span class="nx">nome</span><span class="p">,</span> <span class="nx">idade</span><span class="p">){</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">nome</span> <span class="o">=</span> <span class="nx">nome</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">idade</span> <span class="o">=</span> <span class="nx">idade</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Pessoa</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">falar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;meu nome e &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">nome</span> <span class="o">+</span> <span class="s1">&#39; minha idade e &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">idade</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">andar</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nome</span> <span class="o">+</span><span class="s1">&#39; esta andando&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java.</p>
+
+<figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//criando objeto em JavaScript</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">meuObjeto</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pessoa</span><span class="p">(</span><span class="s1">&#39;Rodrigo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+</span><span class='line'><span class="c1">//invocando os metodos</span>
+</span><span class='line'><span class="nx">meuObjeto</span><span class="p">.</span><span class="nx">falar</span><span class="p">();</span>
+</span><span class='line'><span class="nx">meuObjeto</span><span class="p">.</span><span class="nx">idade</span><span class="p">();</span>  
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Como Sincronizar Um Fork Com Seu Repositório Original]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
+    <updated>2015-02-23T15:06:17-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
+    <content type="html"><![CDATA[<p>Estamos acostumados a dar um fork em repositórios que contém scripts, aplicações e frameworks para utilizarmos no nosso dia-a-dia, facilitando a criação de nossas aplicações.</p>
+
+<p>Mas, e se o repositório original do qual fizemos o fork se atualizar? Como faremos para sincronizar nosso fork com o repositório original?</p>
+
+<!-- more -->
+
+
+<p>Vamos entender e resolver estas questões!</p>
+
+<h3>Configurando um relacionamento entre seu fork e o repositório original</h3>
+
+<p>Para podermos sincronizar as alterações do repositório original com o seu fork, precisamos seguir os seguintes passos:</p>
+
+<p>1 - Abra o <em>terminal</em> (para usuários Mac e Linux) ou a linha de comando (para usuários Windows).</p>
+
+<p>2 - Liste o repositório corrente configurado no seu fork.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git remote -v
+</span><span class='line'>origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+</span><span class='line'>origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3 - Especifique uma ligação para o repositório que será sincronizado ao seu fork.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4 - Verifique a nova ligação que você especificou para o seu fork.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote -v
+</span><span class='line'>origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+</span><span class='line'>origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+</span><span class='line'>upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+</span><span class='line'>upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora que executamos a configuração para sincronizar o fork com o repositório, vamos para a próxima etapa!</p>
+
+<h3>Sincronizando o fork</h3>
+
+<p>Para deixar seu fork sempre atualizado em relação ao reposiório original, siga os passos abaixo:</p>
+
+<p>1 - Abra o <em>terminal</em> (para usuários Mac e Linux) ou a linha de comando (para usuários Windows).</p>
+
+<p>2 - Vá até o diretório do seu projeto (fork)</p>
+
+<p>3 - Busque as <em>branches</em> e seus respectivos <em>commits</em> do repositório. Os <em>commits</em> feitos na branch <em>master</em> serão armazenadas na branch local: <em>upstream/master</em>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git fetch upstream
+</span><span class='line'>remote: Counting objects: 75, done.
+</span><span class='line'>remote: Compressing objects: 100% (53/53), done.
+</span><span class='line'>remote: Total 62 (delta 27), reused 44 (delta 9)
+</span><span class='line'>Unpacking objects: 100% (62/62), done.
+</span><span class='line'>From https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+</span><span class='line'> * [new branch]      master     -&gt; upstream/master</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>4 - Certifique-se de que está na branch <em>master</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git checkout master
+</span><span class='line'>Switched to branch 'master'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>5 - Faça um <em>merge</em> das suas alterações armazenadas em <em>upstream/master</em> dentro da sua branch <em>master</em> local. Isso atualizará a branch do seu fork sem perder suas atualizações locais.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git merge upstream/master
+</span><span class='line'>Updating a422352..5fdff0f
+</span><span class='line'>Fast-forward
+</span><span class='line'> README                    |    9 -------
+</span><span class='line'> README.md                 |    7 ++++++
+</span><span class='line'> 2 files changed, 7 insertions(+), 9 deletions(-)
+</span><span class='line'> delete mode 100644 README
+</span><span class='line'> create mode 100644 README.md</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Se sua branch local não conter nenhum <em>commit</em>, o GIT irá realizar um <em>&ldquo;fast-forward&rdquo;</em>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git merge upstream/master
+</span><span class='line'>Updating 34e91da..16c56ad
+</span><span class='line'>Fast-forward
+</span><span class='line'> README.md                 |    5 +++--
+</span><span class='line'> 1 file changed, 3 insertions(+), 2 deletions(-)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pronto! Fork sincronizado e atualizado!</p>
+
+<h4>Referência:</h4>
+
+<ul>
+<li><strong>GitHub</strong>: <a href="https://help.github.com/articles/syncing-a-fork/">https://help.github.com/articles/syncing-a-fork/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <updated>2015-02-23T13:55:09-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
+
+<p>Coisas que pela lógica deveriam funcionar de uma maneira, mais por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
+
+<!-- more -->
+
+
+<p>Esse post se dedica a tratar de um Gotcha muito comum relacionado a  escopo, que provavelmente você já foi pego por ele, caso não, é hora de explodir sua cabeça.</p>
+
+<figure class='code'><figcaption><span>gotcha</span><a href='http://en.wikipedia.org/wiki/Gotcha_%28programming%29#Gotchas_in_JavaScript_programming_language'>Gotcha (programming)]</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
+</span><span class='line'> <span class="nx">func</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">func</span><span class="p">[</span><span class="mi">2</span><span class="p">]();</span>
+</span><span class='line'><span class="nx">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ao executar esse trecho de código nos deparamos com o alert sempre com o valor 3.</p>
+
+<p><strong>Oh God, Help me!</strong></p>
+
+<p>Take easy boy, vamos entender o que acontece.</p>
+
+<p>O <code>i</code> dentro closure aponta para <code>i</code> global.  Quando chamamos a função <code>func[0]()</code> o <code>i</code> será 3 por que o valor do <code>i</code> global é 3.</p>
+
+<p>Problema semelhante acontece quando colocamos um ajax em um looping, e desejamos usar o índice dentro de seus callbacks. O índice aparece como <code>undefined</code>, veja o exemplo:</p>
+
+<figure class='code'><figcaption><span>ajax dentro de looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">users</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1028</span><span class="p">,</span><span class="mi">885</span><span class="p">,</span><span class="mi">931</span><span class="p">];</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://echo.jsontest.com/users/&#39;</span><span class="o">+</span> <span class="nx">users</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">,</span>
+</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="c1">//undefined</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">response</span> <span class="p">);</span> <span class="c1">// server response</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Isso acontece porque <code>i</code> é global dentro desse escopo, logo o valor dele é 3 e <code>users[i]</code> aparece como <code>undefined</code> pois a posição 3 não existe.</p>
+
+<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada interação, veja o exemplo:</p>
+
+<figure class='code'><figcaption><span>função anônima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
+</span><span class='line'>    <span class="nx">func</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// Índice do looping sendo passado como parâmetro</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Exemplo usando com ajax:</p>
+
+<figure class='code'><figcaption><span>função anônima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">users</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1028</span><span class="p">,</span><span class="mi">885</span><span class="p">,</span><span class="mi">931</span><span class="p">];</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">)(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://echo.jsontest.com/users/&#39;</span><span class="o">+</span> <span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">,</span>
+</span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="c1">//undefined</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">response</span> <span class="p">);</span> <span class="c1">// resposta</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">i</span><span class="p">)</span><span class="c1">// Índice do looping sendo passado como parâmetro</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O Javascript possui varios gotchas. <a href="http://www.codeproject.com/Articles/182416/A-Collection-of-JavaScript-Gotchas">Jonathan Cardy</a> escreveu um post bem completo, sobre vários gotchas do Javascript, vale uma lida.</p>
+
+<p>Já com relação a closures, existe um post no <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">stackoverflow</a> detalhando a fundo sobre o assunto.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/20/web-messaging/"/>
+    <updated>2015-02-20T17:24:45-02:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/20/web-messaging</id>
+    <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
+
+<!-- more -->
+
+
+<p>Mensagens <em>cross-document</em> permitem que os scritps possam interagir através destes limites, proporcionando um nível de segurança não muito desenvolvido.
+Sendo assim, é essencial que o desenvolvedor cheque a origem da mensagem antes de efetuar qualquer manipulação.</p>
+
+<p>A tabela abaixo, esclarece forma simples como funciona a <strong><em>Política de Mesma Origem</em></strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th> <strong>URL</strong>                    </th>
+<th style="text-align:center;"> <strong>Mesma origem?</strong> </th>
+<th style="text-align:right;"> <strong>Razão</strong>        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> <a href="http://jsenv.com/about">http://jsenv.com/about</a>     </td>
+<td style="text-align:center;"> Sim             </td>
+<td style="text-align:right;"> mesmo host, protocolo, porta        </td>
+</tr>
+<tr>
+<td> <a href="http://jsenv.com/">http://jsenv.com/</a>          </td>
+<td style="text-align:center;"> Sim             </td>
+<td style="text-align:right;"> mesmo host, protocolo, porta        </td>
+</tr>
+<tr>
+<td> <a href="https://jsenv.com/">https://jsenv.com/</a>         </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> protocolo diferente </td>
+</tr>
+<tr>
+<td> <a href="http://jsenv.com:81">http://jsenv.com:81</a>        </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> porta diferente     </td>
+</tr>
+<tr>
+<td> <a href="http://about.jsenv.com">http://about.jsenv.com</a>     </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> host diferente      </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>window.postMessage(<em>mensagem</em>, <em>destino</em>, <em>[portas]</em>)</h3>
+
+<p>Esta API permite que seja enviadas mensagens de texto simples, porém podemos enviar objetos transformados em String, por exemplo: <strong><em>JSON.stringify()</em></strong> para o envio e <strong><em>JSON.parse()</em></strong> no recebimento.
+Confira nos exemplos abaixo:</p>
+
+<figure class='code'><figcaption><span>Conversão de um objeto em string</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj_message</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">nome</span><span class="o">:</span> <span class="s1">&#39;JS Env&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">dominio</span><span class="o">:</span> <span class="s1">&#39;jsenv.com&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">atualizado</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">str_message</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="cm">/* transformando um objeto em string para envio */</span>
+</span><span class='line'><span class="nx">str_message</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span> <span class="nx">obj_message</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<figure class='code'><figcaption><span>Conversão de uma string em objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/* &quot;{&quot;nome&quot;:&quot;JS Env&quot;,&quot;dominio&quot;:&quot;jsenv.com&quot;,&quot;atualizado&quot;:true}&quot; */</span>
+</span><span class='line'><span class="nx">str_message</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span> <span class="nx">obj_message</span> <span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h3>Parâmetros:</h3>
+
+<ul>
+<li><strong>mensagem</strong>: é uma string contendo a mensagem.</li>
+<li><strong>destino</strong>: é o endereço para onde a mensagem está sendo enviada. Ele pode adotar 3 tipos de valores:
+
+<ul>
+<li>uma URL absoluta: <a href="http://www.jsenv.com">http://www.jsenv.com</a></li>
+<li>um caractere curinga (*), para receber de qualquer destino.</li>
+<li>ou um valor que restringe o destino da mensagem (/), adotando o a política de mesma origem.</li>
+</ul>
+</li>
+<li><strong>portas</strong>   (opcional):    define um array com as portas válidas para o destino da mensagem.</li>
+</ul>
+
+
+<p>As mensagens podem ser enviadas de iframes para o documento que o carrega (parent) e o processo inverso, do documento (parent) para o iframe, conforme exemplo abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/* Posta mensagem para o iFrame */</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'><span class="nx">sender</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">&#39;{ atualizar: true }&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jsenv.com/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/* Posta a mensagem para o parent do iFrame */</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">;</span>
+</span><span class='line'><span class="nx">sender</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s1">&#39;{ atualizar: true }&#39;</span><span class="p">,</span> <span class="s1">&#39;http://jsenv.com/&#39;</span><span class="p">);</span>   
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Escutando o evento &ldquo;message&rdquo;</h3>
+
+<p>Para receber a mensagem, basta escutarmos o evento padrão da especificação da API Web Messaging: <strong><em>message</em></strong> . Ele deve estar na página que irá manipular a mensagem. Conforme exemplo abaixo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nx">show_message</span><span class="p">,</span> <span class="kc">false</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nx">show_message</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">show_message</span> <span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>O Evento de mensagem recebido possui os seguintes atributos:</h3>
+
+<ul>
+<li><strong>data</strong>:         O conteúdo da mensagem.</li>
+<li><strong>origin</strong>:       A origem da mensagem.</li>
+<li><strong>source</strong>:       O objeto WindowProxy do destino da mensagem.</li>
+<li><strong>ports</strong>:        Retorna um array com as portas enviadas junto da mensagem.</li>
+<li><strong>lastEventId</strong>:  Retorna o identificador do último evento.</li>
+</ul>
+
+
+<p>Assim, para visualizar cada atributo citado acima, a função <strong><em>show_message</em></strong> fica:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">show_message</span> <span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">==</span> <span class="s1">&#39;http://jsenv.com&#39;</span> <span class="p">)</span> <span class="p">{</span>       
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;Mensagem       =&gt;&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span> <span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;origem         =&gt;&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;WindowProxy    =&gt;&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">source</span> <span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;Ports          =&gt;&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">ports</span> <span class="p">);</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;LastEventID    =&gt;&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">lastEventId</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">&#39;Origem de envio não autorizada.&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Referências:</p>
+
+<ul>
+<li><strong>Wikipedia:</strong> <a href="http://en.wikipedia.org/wiki/Web_Messaging">http://en.wikipedia.org/wiki/Web_Messaging</a></li>
+<li><strong>Livro HTML 5 - Maujor:</strong> <a href="http://livrohtml5.com.br/">http://livrohtml5.com.br/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
