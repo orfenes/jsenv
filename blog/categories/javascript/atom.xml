@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript, | JS env]]></title>
   <link href="http://www.jsenv.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
-  <updated>2015-02-24T22:49:08-03:00</updated>
+  <updated>2015-02-25T00:41:03-03:00</updated>
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
@@ -25,7 +25,7 @@
 
 <h2>Protótipos</h2>
 
-<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo</p>
+<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo.</p>
 
 <pre><code class="javascript criando objeto">//criando objeto e herdando de Date.prototype
 var data = new Date();
@@ -37,7 +37,7 @@ data.getDate();
 
 <h2>Criando classes em JavaScript</h2>
 
-<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças</p>
+<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
 
 <pre><code class="java classe pessoa">//classe em Java
 public class Pessoa {
@@ -81,11 +81,11 @@ Pessoa.prototype = {
         console.log(this.nome +' esta andando');
     }
 }
+</code></pre>
 
+<p>A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java.</p>
 
-A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java
-
-//criando objeto em JavaScript
+<pre><code class="javascript criando objeto">//criando objeto em JavaScript
 var meuObjeto = new Pessoa('Rodrigo', 30);
 //invocando os metodos
 meuObjeto.falar();

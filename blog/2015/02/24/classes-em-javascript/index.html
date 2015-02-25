@@ -113,7 +113,7 @@
 
 <h2>Protótipos</h2>
 
-<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo</p>
+<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo.</p>
 
 <figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -130,7 +130,7 @@
 
 <h2>Criando classes em JavaScript</h2>
 
-<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças</p>
+<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
 
 <figure class='code'><figcaption><span>classe pessoa</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -203,15 +203,6 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//funçao construtora</span>
 </span><span class='line'><span class="kd">function</span> <span class="nx">Pessoa</span> <span class="p">(</span><span class="nx">nome</span><span class="p">,</span> <span class="nx">idade</span><span class="p">){</span>
 </span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">nome</span> <span class="o">=</span> <span class="nx">nome</span><span class="p">;</span>
@@ -226,11 +217,17 @@
 </span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nome</span> <span class="o">+</span><span class="s1">&#39; esta andando&#39;</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="nx">A</span> <span class="nx">maneira</span> <span class="nx">como</span> <span class="nx">lidamos</span> <span class="nx">como</span> <span class="nx">instanciamos</span> <span class="nx">e</span> <span class="nx">utilizamos</span> <span class="nx">os</span> <span class="nx">m</span><span class="err">é</span><span class="nx">todos</span> <span class="nx">em</span> <span class="nx">JavaScript</span> <span class="nx">s</span><span class="err">ã</span><span class="nx">o</span> <span class="nx">os</span> <span class="nx">mesmo</span> <span class="nx">de</span> <span class="nx">linguagens</span> <span class="nx">como</span> <span class="nx">Java</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//criando objeto em JavaScript</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java.</p>
+
+<figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">//criando objeto em JavaScript</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">meuObjeto</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pessoa</span><span class="p">(</span><span class="s1">&#39;Rodrigo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
 </span><span class='line'><span class="c1">//invocando os metodos</span>
 </span><span class='line'><span class="nx">meuObjeto</span><span class="p">.</span><span class="nx">falar</span><span class="p">();</span>
@@ -262,7 +259,7 @@
         <div class="read-more-list">
           
             <div class="list-item">
-              <h4><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" title="Looping com função anonima auto-executável">Looping com função anonima auto-executável</a></h4>
+              <h4><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" title="Looping com função anônima auto-executável">Looping com função anônima auto-executável</a></h4>
               <span>Published on February 23, 2015</span>
             </div><!-- /.list-item -->
           

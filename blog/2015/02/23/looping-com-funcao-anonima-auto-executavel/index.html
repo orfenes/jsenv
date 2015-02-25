@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="cleartype" content="on">
 
-<title>Looping Com Função Anonima Auto-executável - JS env</title>
+<title>Looping Com Função Anônima Auto-executável - JS env</title>
 <meta name="author" content="JS env team">
 
 
@@ -33,10 +33,10 @@
 <meta property="og:local" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:url" content="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel">
-<meta property="og:title" content="Looping com função anonima auto-executável">
+<meta property="og:title" content="Looping com função anônima auto-executável">
 <meta property="og:description" content="Ambiente dedicado a assuntos sobre JavaScript">
 
-  <meta property="og:image" content="">
+  <meta property="og:image" content="/post_images/C536C62904.jpg">
 
 <meta property="og:site_name" content="JS env">
 
@@ -58,7 +58,7 @@
 
 </head>
 
-<body id="post" >
+<body id="post" class="feature">
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 <nav id="dl-menu" class="dl-menuwrapper" role="navigation">
@@ -94,26 +94,33 @@
 
 
 
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="/post_images/C536C62904.jpg" alt="Looping com função anônima auto-executável">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
 
 <div id="main" role="main">
   <article class="hentry">
     <header class="header-title">
       <div class="header-title-wrap">
         
-          <h1 class="entry-title"><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" rel="bookmark" title="Looping com função anonima auto-executável">Looping com função anonima auto-executável</a></h1>
+          <h1 class="entry-title"><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" rel="bookmark" title="Looping com função anônima auto-executável">Looping com função anônima auto-executável</a></h1>
         
         <h2>February 23, 2015</h2>
       </div><!-- /.header-title-wrap -->
     </header>
     <div class="entry-content">
-      <p>Javascript em alguns momentos é uma linguagem muito traiçoeira, lhe prega peças que consomem horas de debug e paciência. São os chamados Gotchas, na tradução literal, &ldquo;pegadinhas&rdquo;.</p>
+      <p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
 
-<p>Coisas que pela logica deveriam funcionar de uma maneira, mais por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
+<p>Coisas que pela lógica deveriam funcionar de uma maneira, mais por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
 
 <!-- more -->
 
 
-<p>Esse post se dedica a tratar de um Gotcha muito comum quando se trata de escopo, que provavelmente você já foi pego por ele, caso não, é hora de explodir sua cabeça.</p>
+<p>Esse post se dedica a tratar de um Gotcha muito comum relacionado a  escopo, que provavelmente você já foi pego por ele, caso não, é hora de explodir sua cabeça.</p>
 
 <figure class='code'><figcaption><span>gotcha</span><a href='http://en.wikipedia.org/wiki/Gotcha_%28programming%29#Gotchas_in_JavaScript_programming_language'>Gotcha (programming)]</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -138,13 +145,13 @@
 
 <p>Ao executar esse trecho de código nos deparamos com o alert sempre com o valor 3.</p>
 
-<p>Oh God, Help me!</p>
+<p><strong>Oh God, Help me!</strong></p>
 
 <p>Take easy boy, vamos entender o que acontece.</p>
 
-<p>O i dentro closure aponta para i global.  Quando chamamos a função func<a href="">0</a> o i será 3 por que o valor do i global é 3.</p>
+<p>O <code>i</code> dentro closure aponta para <code>i</code> global.  Quando chamamos a função <code>func[0]()</code> o <code>i</code> será 3 por que o valor do <code>i</code> global é 3.</p>
 
-<p>Problema semelhante acontece quando colocamos um ajax em um looping, e desejamos usar o índice dentro dos callbacks. O Índice aparece como undefined, veja o exemplo:</p>
+<p>Problema semelhante acontece quando colocamos um ajax em um looping, e desejamos usar o índice dentro de seus callbacks. O índice aparece como <code>undefined</code>, veja o exemplo:</p>
 
 <figure class='code'><figcaption><span>ajax dentro de looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -171,9 +178,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anonima auto-executável para que o valor do i seja preservador em cada interação. Veja o exemplo:</p>
+<p>Isso acontece porque <code>i</code> é global dentro desse escopo, logo o valor dele é 3 e <code>users[i]</code> aparece como <code>undefined</code> pois a posição 3 não existe.</p>
 
-<figure class='code'><figcaption><span>função anonima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada interação, veja o exemplo:</p>
+
+<figure class='code'><figcaption><span>função anônima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -183,14 +192,14 @@
 </span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
 </span><span class='line'>    <span class="nx">func</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// Índice do looping sendo passado como parametro</span>
+</span><span class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// Índice do looping sendo passado como parâmetro</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Exemplo usando com ajax:</p>
 
-<figure class='code'><figcaption><span>função anonima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>função anônima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -213,17 +222,17 @@
 </span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">response</span> <span class="p">);</span> <span class="c1">// resposta</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">})(</span><span class="nx">i</span><span class="p">)</span><span class="c1">// Índice do looping sendo passado como parametro</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">i</span><span class="p">)</span><span class="c1">// Índice do looping sendo passado como parâmetro</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>O Javascript possui varios gotchas. <a href="http://www.codeproject.com/Articles/182416/A-Collection-of-JavaScript-Gotchas">Jonathan Cardy</a> escreveu um post bem completo. sobre vários gotchas do Javascript, vale uma lida.</p>
+<p>O Javascript possui varios gotchas. <a href="http://www.codeproject.com/Articles/182416/A-Collection-of-JavaScript-Gotchas">Jonathan Cardy</a> escreveu um post bem completo, sobre vários gotchas do Javascript, vale uma lida.</p>
 
-<p>Já com relação a closures, existe um post <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">stackoverflow</a> detalhando a fundo sobre o assunto.</p>
+<p>Já com relação a closures, existe um post no <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">stackoverflow</a> detalhando a fundo sobre o assunto.</p>
 
       <footer class="entry-meta">
         <span class="entry-tags"><a href="/categories/#javascript" title="Pages tagged javascript" class="tag">javascript</a></span>
-        <span><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" rel="bookmark" title="Looping com função anonima auto-executável">Looping com função anonima auto-executável</a> was published on <span class="entry-date date published updated"><time datetime="2015-02-23T13:55:09-03:00">February 23, 2015</time></span></span>
+        <span><a href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/" rel="bookmark" title="Looping com função anônima auto-executável">Looping com função anônima auto-executável</a> was published on <span class="entry-date date published updated"><time datetime="2015-02-23T13:55:09-03:00">February 23, 2015</time></span></span>
         
         <span class="author vcard"><span class="fn"><a href="" title="About Guilherme Moura Nascimento">Guilherme Moura Nascimento</a></span></span>
         
