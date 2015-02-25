@@ -18,7 +18,7 @@
 
 <meta name="description" content="JS env - Ambiente dedicado a assuntos sobre JavaScript">
 
-<meta name="keywords" content="javascript, prototipos, ">
+<meta name="keywords" content="javascript prototipos ">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -116,14 +116,14 @@
       </div><!-- /.header-title-wrap -->
     </header>
     <div class="entry-content">
-      <p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de inicio foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
+      <p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de início foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
 
 <!-- more -->
 
 
 <h2>Protótipos</h2>
 
-<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo.</p>
+<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo. Todos os objetos criados com a palavra-chave <code>new</code> utilizam a função construtora como protótipo, exemplo:</p>
 
 <figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -136,13 +136,13 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>O objeto data herda as propriedades de Date.prototype e de Object.prototype, essa serie de encadeamento nos chamamos de encandeamento de protótipos.</p>
+<p>O objeto data herda as propriedades de <code>Date.prototype</code> e de <code>Object.prototype</code>, essa série de encadeamento nos chamamos de encandeamento de protótipos.</p>
 
 <h2>Criando classes em JavaScript</h2>
 
-<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
+<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora e através dela  é possível se realizar a herança de propriedades para o objeto que vai herdar, segue o código abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
 
-<figure class='code'><figcaption><span>classe pessoa</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>exemplo classe pessoa java</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -199,7 +199,7 @@
 
 
 
-<figure class='code'><figcaption><span>classe pessoa</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>exemplo classe pessoa javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -230,9 +230,9 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java.</p>
+<p>A maneira como lidamos, como instanciamos e utilizamos os métodos em JavaScript são os mesmos de linguagem Java.</p>
 
-<figure class='code'><figcaption><span>criando objeto</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>exemplo criando objeto em javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -248,7 +248,7 @@
 <p></p>
 
       <footer class="entry-meta">
-        <span class="entry-tags"><a href="/categories/#javascript," title="Pages tagged javascript," class="tag">javascript,</a><a href="/categories/#prototipos," title="Pages tagged prototipos," class="tag">prototipos,</a></span>
+        <span class="entry-tags"><a href="/categories/#javascript" title="Pages tagged javascript" class="tag">javascript</a><a href="/categories/#prototipos" title="Pages tagged prototipos" class="tag">prototipos</a></span>
         <span><a href="/blog/2015/02/24/classes-em-javascript/" rel="bookmark" title="Classes em Javascript">Classes em Javascript</a> was published on <span class="entry-date date published updated"><time datetime="2015-02-24T00:01:27-03:00">February 24, 2015</time></span></span>
         
         <span class="author vcard"><span class="fn"><a href="" title="About Rodrigo Fernandes">Rodrigo Fernandes</a></span></span>
