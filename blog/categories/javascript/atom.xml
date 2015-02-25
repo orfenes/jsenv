@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Javascript, | JS env]]></title>
+  <title><![CDATA[Category: Javascript | JS env]]></title>
   <link href="http://www.jsenv.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
-  <updated>2015-02-25T11:31:38-03:00</updated>
+  <updated>2015-02-25T14:51:26-03:00</updated>
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
@@ -14,83 +14,84 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Classes Em Javascript]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
-    <updated>2015-02-24T00:01:27-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
-    <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de inicio foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
+    <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <updated>2015-02-23T13:55:09-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
+
+<p>Coisas que pela lógica deveriam funcionar de uma maneira, mais por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
 
 <!-- more -->
 
 
-<h2>Protótipos</h2>
+<p>Esse post se dedica a tratar de um Gotcha muito comum relacionado a  escopo, que provavelmente você já foi pego por ele, caso não, é hora de explodir sua cabeça.</p>
 
-<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo, todos os objetos criados com a palavra-chave new utiliza a função construtora como protótipo, o código por exemplo abaixo.</p>
+<pre><code class="javascript gotcha http://en.wikipedia.org/wiki/Gotcha_%28programming%29#Gotchas_in_JavaScript_programming_language Gotcha (programming)]">var func = [];
+for( var i = 0; i &lt; 3; i++ ){
+ func[i] = function () {
+  alert(i);
+ }
+}
 
-<pre><code class="javascript criando objeto">//criando objeto e herdando de Date.prototype
-var data = new Date();
-//utilizando método do objeto new Date() que foi herdada pelo objeto data
-data.getDate();
+func[2]();
+func[0]();
 </code></pre>
 
-<p>O objeto data herda as propriedades de Date.prototype e de Object.prototype, essa serie de encadeamento nos chamamos de encandeamento de protótipos.</p>
+<p>Ao executar esse trecho de código nos deparamos com o alert sempre com o valor 3.</p>
 
-<h2>Criando classes em JavaScript</h2>
+<p><strong>Oh God, Help me!</strong></p>
 
-<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora, através dela  é possível se realiza a herança de propriedades para o objeto que vai herdar, segue o codigo abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
+<p>Take easy boy, vamos entender o que acontece.</p>
 
-<pre><code class="java classe pessoa">//classe em Java
-public class Pessoa {
-    //atributos 
-    private String nome;
-    private int idade;
-    //construtor
-    public Pessoa(String nome, int idade){
-        this.nome = nome;
-        this.idade = idade;
-    }
-    //metodos
-    public void falar(){
-        System.out.print("Meu nome é " + this.nome + " e minha idade é " + this.idade);
-    }
-    public void andar(){
-        System.out.println(this.nome + " esta andando");
-    }
+<p>O <code>i</code> dentro closure aponta para <code>i</code> global.  Quando chamamos a função <code>func[0]()</code> o <code>i</code> será 3 por que o valor do <code>i</code> global é 3.</p>
 
+<p>Problema semelhante acontece quando colocamos um ajax em um looping, e desejamos usar o índice dentro de seus callbacks. O índice aparece como <code>undefined</code>, veja o exemplo:</p>
 
-    public static void main(String[] args){
-        Pessoa meuObjeto = new Pessoa("Rodrigo", 30);
-        meuObjeto.andar();
-        meuObjeto.falar();
-
-    }
+<pre><code class="javascript ajax dentro de looping">var users = [1028,885,931];
+for( var i = 0; i &lt; users.length; i+=1) {
+    $.ajax({
+        url: 'http://echo.jsontest.com/users/'+ users[i] ,
+        dataType: "json",
+        success: function( response ) {
+            console.log(users[i]) //undefined
+            console.log( response ); // server response
+        }
+    });
 }
 </code></pre>
 
-<pre><code class="javascript classe pessoa">//funçao construtora
-function Pessoa (nome, idade){
-    this.nome = nome;
-    this.idade = idade;
-}
+<p>Isso acontece porque <code>i</code> é global dentro desse escopo, logo o valor dele é 3 e <code>users[i]</code> aparece como <code>undefined</code> pois a posição 3 não existe.</p>
 
-Pessoa.prototype = {
-    falar: function(){
-        console.log('meu nome e ' + this.nome + ' minha idade e ' + this.idade);
-    },
-    andar: function(){
-        console.log(this.nome +' esta andando');
-    }
+<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada interação, veja o exemplo:</p>
+
+<pre><code class="javascript função anônima auto-executável com looping">var func = [];
+for( var i = 0; i &lt; 3; i++ ){
+    func[i] = (function (index) {
+        alert(index)
+    })(i) // Índice do looping sendo passado como parâmetro
 }
 </code></pre>
 
-<p>A maneira como lidamos como instanciamos e utilizamos os métodos em JavaScript são os mesmo de linguagens como Java.</p>
+<p>Exemplo usando com ajax:</p>
 
-<pre><code class="javascript criando objeto">//criando objeto em JavaScript
-var meuObjeto = new Pessoa('Rodrigo', 30);
-//invocando os metodos
-meuObjeto.falar();
-meuObjeto.idade();  
+<pre><code class="javascript função anônima auto-executável com looping">var func = [];
+var users = [1028,885,931];
+for( var i = 0; i &lt; users.length; i+=1)(function (index) {
+$.ajax({
+        url: 'http://echo.jsontest.com/users/'+ users[index] ,
+        dataType: "json",
+        success: function( response ) {
+            console.log(users[index]) //undefined
+            console.log( response ); // resposta
+        }
+    });
+})(i)// Índice do looping sendo passado como parâmetro
 </code></pre>
+
+<p>O Javascript possui varios gotchas. <a href="http://www.codeproject.com/Articles/182416/A-Collection-of-JavaScript-Gotchas">Jonathan Cardy</a> escreveu um post bem completo, sobre vários gotchas do Javascript, vale uma lida.</p>
+
+<p>Já com relação a closures, existe um post no <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">stackoverflow</a> detalhando a fundo sobre o assunto.</p>
 ]]></content>
   </entry>
   
