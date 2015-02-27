@@ -150,7 +150,7 @@
 
 <p><strong>Oh God, Help me!</strong></p>
 
-<p>Take easy boy, vamos entender o que acontece.</p>
+<p>Take it easy boy, vamos entender o que acontece.</p>
 
 <p>O <code>i</code> dentro closure aponta para <code>i</code> global.  Quando chamamos a função <code>func[0]()</code> o <code>i</code> será 3 por que o valor do <code>i</code> global é 3.</p>
 
@@ -183,7 +183,7 @@
 
 <p>Isso acontece porque <code>i</code> é global dentro desse escopo, logo o valor dele é 3 e <code>users[i]</code> aparece como <code>undefined</code> pois a posição 3 não existe.</p>
 
-<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada interação, veja o exemplo:</p>
+<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada iteração, veja o exemplo:</p>
 
 <figure class='code'><figcaption><span>função anônima auto-executável com looping</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -191,12 +191,24 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">[];</span>
 </span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
 </span><span class='line'>    <span class="nx">func</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">};</span>
 </span><span class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">)</span> <span class="c1">// Índice do looping sendo passado como parâmetro</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]();</span> <span class="c1">// alert 0</span>
+</span><span class='line'><span class="nx">func</span><span class="p">[</span><span class="mi">1</span><span class="p">]();</span> <span class="c1">// alert 1</span>
+</span><span class='line'><span class="nx">func</span><span class="p">[</span><span class="mi">2</span><span class="p">]();</span> <span class="c1">//alert 2</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -214,18 +226,20 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
+<span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">[];</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">users</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1028</span><span class="p">,</span><span class="mi">885</span><span class="p">,</span><span class="mi">931</span><span class="p">];</span>
-</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">)(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://echo.jsontest.com/users/&#39;</span><span class="o">+</span> <span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">,</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">users</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://echo.jsontest.com/users/&#39;</span><span class="o">+</span> <span class="nx">users</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">,</span>
 </span><span class='line'>        <span class="nx">dataType</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="c1">//undefined</span>
-</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">response</span> <span class="p">);</span> <span class="c1">// resposta</span>
-</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="c1">// usuário correto</span>
+</span><span class='line'>                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">response</span> <span class="p">);</span> <span class="c1">// resposta</span>
+</span><span class='line'>            <span class="p">};</span>
+</span><span class='line'>        <span class="p">})(</span><span class="nx">i</span><span class="p">)</span><span class="c1">// Índice do looping sendo passado como parâmetro</span>
 </span><span class='line'>    <span class="p">});</span>
-</span><span class='line'><span class="p">})(</span><span class="nx">i</span><span class="p">)</span><span class="c1">// Índice do looping sendo passado como parâmetro</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -245,23 +259,23 @@
       <div class="read-more">
         
           <div class="read-more-header">
-            <a href="/blog/2015/02/24/classes-em-javascript/" class="btn">Read More</a>
+            <a href="/blog/2015/02/26/membros-privados-em-javascript/" class="btn">Read More</a>
           </div><!-- /.read-more-header -->
           <div class="read-more-content">
-            <h3><a href="/blog/2015/02/24/classes-em-javascript/" title="Classes em Javascript">Classes em Javascript</a></h3>
-            <p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade &hellip;&hellip; <a href="/blog/2015/02/24/classes-em-javascript/"> Continue reading</a></p>
+            <h3><a href="/blog/2015/02/26/membros-privados-em-javascript/" title="Membros Privados em Javascript">Membros Privados em Javascript</a></h3>
+            <p>Quem nunca se perguntou: _&#8221;Como faço para deixar minhas variáveis e métodos privados com Javascript?&#8221;_. Pois bem, tentarei de uma forma bem &hellip;&hellip; <a href="/blog/2015/02/26/membros-privados-em-javascript/"> Continue reading</a></p>
           </div><!-- /.read-more-content -->
         
         <div class="read-more-list">
           
             <div class="list-item">
-              <h4><a href="/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/" title="Como sincronizar um fork com seu repositório original">Como sincronizar um fork com seu repositório original</a></h4>
-              <span>Published on February 23, 2015</span>
+              <h4><a href="/blog/2015/02/24/classes-em-javascript/" title="Classes em Javascript">Classes em Javascript</a></h4>
+              <span>Published on February 24, 2015</span>
             </div><!-- /.list-item -->
           
             <div class="list-item">
-              <h4><a href="/blog/2015/02/20/web-messaging/" title="Web Messaging - API HTML 5">Web Messaging - API HTML 5</a></h4>
-              <span>Published on February 20, 2015</span>
+              <h4><a href="/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/" title="Como sincronizar um fork com seu repositório original">Como sincronizar um fork com seu repositório original</a></h4>
+              <span>Published on February 23, 2015</span>
             </div><!-- /.list-item -->
           
         </div><!-- /.read-more-list -->
