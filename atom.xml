@@ -4,7 +4,7 @@
   <title><![CDATA[JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
   <link href="http://www.jsenv.com/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
-  <updated>2015-02-27T10:46:13-03:00</updated>
+  <updated>2015-02-27T10:51:13-03:00</updated>
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
@@ -20,7 +20,7 @@
     <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
-<p>Algumas pessoas acreditam que o Javascript não tem a propriedade de <em>&ldquo;esconder informações&rdquo;</em>, porquê <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
+<p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porquê <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
 
 <h4><em>Sim! Objetos Javascript podem ter membros privados.</em></h4>
 
