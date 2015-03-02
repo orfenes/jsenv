@@ -4,7 +4,7 @@
   <title><![CDATA[JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
   <link href="http://www.jsenv.com/atom.xml" rel="self"/>
   <link href="http://www.jsenv.com/"/>
-  <updated>2015-02-27T10:51:13-03:00</updated>
+  <updated>2015-03-02T10:21:36-03:00</updated>
   <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
@@ -20,7 +20,7 @@
     <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
-<p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porquê <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
+<p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
 
 <h4><em>Sim! Objetos Javascript podem ter membros privados.</em></h4>
 
@@ -37,7 +37,7 @@
 
 <h2>Membros Públicos</h2>
 
-<p>Os membros de um <code>object</code> são, sem exceção públicos. Qualquer função pode acessar, modificar, deletar ou até mesmo adicionar novos membros. Existem duas maneiras principais de inserir membros em um novo objeto:</p>
+<p>Os membros de um <code>object</code> são, sem exceção, públicos. Qualquer função pode acessar, modificar, deletar ou até mesmo adicionar novos membros. Existem duas maneiras principais de inserir membros em um novo objeto:</p>
 
 <h3>No construtor</h3>
 
@@ -63,7 +63,7 @@
 
 <h3>No prototype</h3>
 
-<p>Esta técnica é utilizada para adicionar <em>métodos</em> públicos. Quando um mebro é procurado dentro do próprio objeto e não é encontrado, ele é retirado do protótipo do Construtor do objeto. O mecânismo do <em>prototype</em> é usado para herança. O que também conserva a memória. Para adicionar um método para todos os objetos criados a partir do Construtor do prototype:</p>
+<p>Esta técnica é utilizada para adicionar <em>métodos</em> públicos. Quando um membro é procurado dentro do próprio objeto e não é encontrado, ele é retirado do protótipo do Construtor do objeto. O mecânismo do <em>prototype</em> é usado para herança. O que também conserva a memória. Para adicionar um método para todos os objetos criados a partir do Construtor, adicione uma função ao protótipo do Construtor:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -121,7 +121,7 @@
 </span><span class='line'>      <span class="nx">that</span>    <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 </span><span class='line'>  <span class="c1">//</span>
 </span><span class='line'>  <span class="kd">function</span> <span class="nx">resgata</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="nx">limite</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="nx">limite</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="s1">&#39;undefined&#39;</span> <span class="o">!==</span> <span class="k">typeof</span> <span class="nx">that</span><span class="p">.</span><span class="nx">membro</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">return</span> <span class="kc">true</span>
 </span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">return</span> <span class="kc">false</span>
@@ -174,7 +174,7 @@
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'>  <span class="c1">//</span>
 </span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">escreve</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="nx">resgata</span><span class="p">()</span> <span class="o">?</span> <span class="nx">that</span><span class="p">.</span><span class="nx">membro</span> <span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">resgata</span><span class="p">()</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">membro</span> <span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -182,16 +182,16 @@
 
 <p>Então temos o método privilegiado <code>escreve</code> que acessa os valores definidos dentro do <em>Construtor</em>, porém não pode alterá-los. \o/</p>
 
-<p>Isso só é possível porquê existem as <em>Closures</em> no Javascript.</p>
+<p>Isso só é possível porque existem as <em>Closures</em> no Javascript.</p>
 
 <h2>Closures</h2>
 
 <p>Os padrões de membros <code>public</code>, <code>private</code> e <code>privileged</code> só se tornam possíveis pelo fato da linguagem Javascript possuir <em>Closures</em>.</p>
 
-<p>Isso quer dizer que uma função interna sempre tem acesso as variáveis e parâmetros da função externa, mesmo depois dela já ter executado.
+<p>Isso quer dizer que uma função interna sempre tem acesso as variáveis e parâmetros da função externa, mesmo depois de ela já ter executado.
 Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
 
-<p>Métodos privados e privilegiados só podem ser atribuidos enquanto o objeto está sendo construído, já os públicos podem ser adicionados a qualquer momento.</p>
+<p>Métodos privados e privilegiados só podem ser atribuídos enquanto o objeto está sendo construído, já os públicos podem ser adicionados a qualquer momento.</p>
 
 <h2>Padrões utilizando Closures</h2>
 
