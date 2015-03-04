@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Git | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://www.jsenv.com/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://www.jsenv.com/"/>
-  <updated>2015-03-04T19:15:14-03:00</updated>
-  <id>http://www.jsenv.com/</id>
+  <link href="/blog/categories/git/atom.xml" rel="self"/>
+  <link href="/"/>
+  <updated>2015-03-04T19:21:54-03:00</updated>
+  <id>/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Como Sincronizar Um Fork Com Seu Repositório Original]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
+    <link href="/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
     <updated>2015-02-23T15:06:17-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
+    <id>/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
     <content type="html"><![CDATA[<p>Estamos acostumados a dar um fork em repositórios que contém scripts, aplicações e frameworks para utilizarmos no nosso dia-a-dia, facilitando a criação de nossas aplicações.</p>
 
 <p>Mas, e se o repositório original do qual fizemos o fork se atualizar? Como faremos para sincronizar nosso fork com o repositório original?</p>
