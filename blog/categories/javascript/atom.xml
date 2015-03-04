@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="/"/>
-  <updated>2015-03-04T19:21:54-03:00</updated>
-  <id>/</id>
+  <link href="http://www.jsenv.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com/"/>
+  <updated>2015-03-04T19:23:52-03:00</updated>
+  <id>http://www.jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Membros Privados Em Javascript]]></title>
-    <link href="/blog/2015/02/26/membros-privados-em-javascript/"/>
+    <link href="http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript/"/>
     <updated>2015-02-26T15:04:53-03:00</updated>
-    <id>/blog/2015/02/26/membros-privados-em-javascript</id>
+    <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
 <p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
@@ -189,9 +189,9 @@ Construtor.prototype.membro = valor;
   
   <entry>
     <title type="html"><![CDATA[Classes Em Javascript]]></title>
-    <link href="/blog/2015/02/24/classes-em-javascript/"/>
+    <link href="http://www.jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
     <updated>2015-02-24T00:01:27-03:00</updated>
-    <id>/blog/2015/02/24/classes-em-javascript</id>
+    <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
     <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de início foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
 
 <!-- more -->
@@ -270,9 +270,9 @@ meuObjeto.idade();
   
   <entry>
     <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
-    <link href="/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <link href="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
     <updated>2015-02-23T13:55:09-03:00</updated>
-    <id>/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <id>http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
     <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
 
 <p>Coisas que pela lógica deveriam funcionar de uma maneira, mas por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
@@ -359,9 +359,9 @@ for( var i = 0; i &lt; users.length; i+=1)
   
   <entry>
     <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
-    <link href="/blog/2015/02/20/web-messaging/"/>
+    <link href="http://www.jsenv.com/blog/2015/02/20/web-messaging/"/>
     <updated>2015-02-20T17:24:45-02:00</updated>
-    <id>/blog/2015/02/20/web-messaging</id>
+    <id>http://www.jsenv.com/blog/2015/02/20/web-messaging</id>
     <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
 
 <!-- more -->
