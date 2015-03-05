@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
+  <link href="http://www.jsenv.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com/"/>
+  <updated>2015-03-04T19:23:52-03:00</updated>
+  <id>http://www.jsenv.com/</id>
+  <author>
+    <name><![CDATA[JS env team]]></name>
+    <email><![CDATA[team.jsenv@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Membros Privados Em Javascript]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript/"/>
+    <updated>2015-02-26T15:04:53-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
+    <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
+
+<p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
+
+<h4><em>Sim! Objetos Javascript podem ter membros privados.</em></h4>
+
+<p>Mas, antes de nos aprofundarmos vamos entender um pouco mais do funcionamento do Javascript em relação aos objetos:</p>
+
+<!--more-->
+
+
+<h2>Objects</h2>
+
+<p>Javascript é fundamentalmente baseado em <em>objects</em>. Funções são objetos, arrays são objetos e Objetos são objetos. Mas o que são objetos?</p>
+
+<p>Objetos são coleções de pares nome-valor. Os nomes são <em>strings</em> e o valores podem ser <em>strings</em>, <em>numbers</em>, <em>booleans</em> e <em>objects</em> (incluindo <em>arrays</em> e <em>funções</em>).</p>
+
+<h2>Membros Públicos</h2>
+
+<p>Os membros de um <code>object</code> são, sem exceção, públicos. Qualquer função pode acessar, modificar, deletar ou até mesmo adicionar novos membros. Existem duas maneiras principais de inserir membros em um novo objeto:</p>
+
+<h3>No construtor</h3>
+
+<p>Esta técnica é usualmente utilizada para iniciar instâncias de <em>variáveis</em> públicas. A variável <code>this</code> do construtor é usada para adicionar um membro ao objeto.</p>
+
+<pre><code class="javascript">function Adicionar ( param ) {
+    this.membro = param;
+}
+</code></pre>
+
+<p>Então, se construírmos um novo objeto</p>
+
+<pre><code class="javascript">var novo_objeto = new Adicionar( 'a-b-c' );
+</code></pre>
+
+<p>O valor de <code>novo_objeto.membro</code> será <code>a-b-c</code>.</p>
+
+<h3>No prototype</h3>
+
+<p>Esta técnica é utilizada para adicionar <em>métodos</em> públicos. Quando um membro é procurado dentro do próprio objeto e não é encontrado, ele é retirado do protótipo do Construtor do objeto. O mecânismo do <em>prototype</em> é usado para herança. O que também conserva a memória. Para adicionar um método para todos os objetos criados a partir do Construtor, adicione uma função ao protótipo do Construtor:</p>
+
+<pre><code class="javascript">Adicionar.prototype.stamp = function ( string ) {
+    return this.membro + string;
+}
+</code></pre>
+
+<p>Então, podemos chamar o método:</p>
+
+<pre><code class="javascript">novo_objeto.stamp( '-d-e-f' );
+</code></pre>
+
+<p>E o resultado será: <code>a-b-c-d-e-f</code>.</p>
+
+<h2>Membros Privados</h2>
+
+<p>Membros privados são criados pelo construtor. Variáveis comuns e parâmetros do <em>Construtor</em> se tornam membros privados.</p>
+
+<pre><code class="javascript">function Container ( param ) {
+    this.membro = param;
+    var limite  = 3,
+        that    = this;
+}
+</code></pre>
+
+<p>Este construtor criou três variáveis privadas: <code>param</code>, <code>limite</code> e <code>that</code>. Elas estão anexadas ao objeto, mas não estão acessíveis fora, nem são acessíveis aos métodos públicos do objeto. Elas estão acessíveis aos métodos privados. Métodos privados são funções internas do <em>Construtor</em>.</p>
+
+<pre><code class="javascript">function Container ( param ) {
+    this.membro = param;
+    var limite  = 3,
+        that    = this;
+    //
+    function resgata () {
+        if ( limite &gt; 0 &amp;&amp; 'undefined' !== typeof that.membro) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+</code></pre>
+
+<p>Por convenção, nós declaramos a variável <code>that</code> privada. Isso é usado para tornar o objeto disponível para os métodos privados, pois ao usar o <code>this</code> dentro da função ele apontará para o <code>this</code> dela mesma e não para o <code>this</code> do <em>Construtor</em>.</p>
+
+<p>Métodos privados não podem ser invocados por métodos públicos. Para fazer os métodos privados utilizáveis, nós precisamos fazer com que ele tenha privilégios.</p>
+
+<h2>Membros Privilegiados</h2>
+
+<p>Um método privilegiado tem permissão para acessar variáveis e métodos privados, e é acessível por métodos públicos e externos. É possível deletar ou sobrescrever um método privilegiado, mas não é possível alterá-lo e nem forçá-lo a exibir seu conteúdo.</p>
+
+<p>Métodos privilegiados são atribuídos com <code>this</code> dentro do <em>Construtor</em>.</p>
+
+<pre><code class="javascript">function Container ( param ) {
+    this.membro = param;
+    var limite  = 3,
+        that    = this;
+    //
+    function resgata () {
+        if ( limite &gt; 0 ) {
+            return true
+        } else {
+            return false
+        }
+    }
+    //
+    this.escreve = function () {
+        return resgata() ? this.membro : null;
+    }
+}
+</code></pre>
+
+<p>Então temos o método privilegiado <code>escreve</code> que acessa os valores definidos dentro do <em>Construtor</em>, porém não pode alterá-los. \o/</p>
+
+<p>Isso só é possível porque existem as <em>Closures</em> no Javascript.</p>
+
+<h2>Closures</h2>
+
+<p>Os padrões de membros <code>public</code>, <code>private</code> e <code>privileged</code> só se tornam possíveis pelo fato da linguagem Javascript possuir <em>Closures</em>.</p>
+
+<p>Isso quer dizer que uma função interna sempre tem acesso as variáveis e parâmetros da função externa, mesmo depois de ela já ter executado.
+Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
+
+<p>Métodos privados e privilegiados só podem ser atribuídos enquanto o objeto está sendo construído, já os públicos podem ser adicionados a qualquer momento.</p>
+
+<h2>Padrões utilizando Closures</h2>
+
+<h3>Membros Públicos</h3>
+
+<pre><code class="javascript">function Construtor ( ... ) {
+    this.membro = valor;
+}
+Construtor.prototype.membro = valor;
+</code></pre>
+
+<h3>Membros Privados</h3>
+
+<pre><code class="javascript">function Construtor ( ... ) {
+    var that = this,
+        nome = valor;
+    //
+    function nome ( ... ) { ... };
+}
+</code></pre>
+
+<p>Observação: a instrução da função</p>
+
+<pre><code class="javascript">    function nome ( ... ) { ... };
+</code></pre>
+
+<p>é uma abreviação para:</p>
+
+<pre><code class="javascript">    var nome = function nome ( ... ) { ... };
+</code></pre>
+
+<h3>Membros Privilegiados</h3>
+
+<pre><code class="javascript">function Construtor ( ... ) {
+    this.nome = function ( ... ) { ... }
+}
+</code></pre>
+
+<p>Referência:</p>
+
+<ul>
+<li><strong> Douglas Crockford </strong>: <a href="http://javascript.crockford.com/private.html">http://javascript.crockford.com/private.html</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Classes Em Javascript]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
+    <updated>2015-02-24T00:01:27-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
+    <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de início foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
+
+<!-- more -->
+
+
+<h2>Protótipos</h2>
+
+<p>Todo objeto em JavaScript tem um segundo objeto, este segundo objeto é chamado de protótipo, e o primeiro sempre herda as propriedades deste protótipo. Todos os objetos criados com a palavra-chave <code>new</code> utilizam a função construtora como protótipo, exemplo:</p>
+
+<pre><code class="javascript criando objeto">//criando objeto e herdando de Date.prototype
+var data = new Date();
+//utilizando método do objeto new Date() que foi herdada pelo objeto data
+data.getDate();
+</code></pre>
+
+<p>O objeto data herda as propriedades de <code>Date.prototype</code> e de <code>Object.prototype</code>, essa série de encadeamento nos chamamos de encandeamento de protótipos.</p>
+
+<h2>Criando classes em JavaScript</h2>
+
+<p>A maneira como se é criada classes em JavaScript é diferente da maneira como é feita em Java, as classes em JavaScript são baseadas em cima do mecanismo de  protótipos, primeiro é necessário criar uma função que se tem o nome de construtora e através dela  é possível se realizar a herança de propriedades para o objeto que vai herdar, segue o código abaixo tanto em JavaScript como em Java para que você possa comparar as diferenças.</p>
+
+<pre><code class="java exemplo classe pessoa java">//classe em Java
+public class Pessoa {
+    //atributos 
+    private String nome;
+    private int idade;
+    //construtor
+    public Pessoa(String nome, int idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+    //metodos
+    public void falar(){
+        System.out.print("Meu nome é " + this.nome + " e minha idade é " + this.idade);
+    }
+    public void andar(){
+        System.out.println(this.nome + " esta andando");
+    }
+
+
+    public static void main(String[] args){
+        Pessoa meuObjeto = new Pessoa("Rodrigo", 30);
+        meuObjeto.andar();
+        meuObjeto.falar();
+
+    }
+}
+</code></pre>
+
+<pre><code class="javascript exemplo classe pessoa javascript">//funçao construtora
+function Pessoa (nome, idade){
+    this.nome = nome;
+    this.idade = idade;
+}
+
+Pessoa.prototype = {
+    falar: function(){
+        console.log('meu nome e ' + this.nome + ' minha idade e ' + this.idade);
+    },
+    andar: function(){
+        console.log(this.nome +' esta andando');
+    }
+}
+</code></pre>
+
+<p>A maneira como lidamos, como instanciamos e utilizamos os métodos em JavaScript são os mesmos de linguagem Java.</p>
+
+<pre><code class="javascript exemplo criando objeto em javascript">//criando objeto em JavaScript
+var meuObjeto = new Pessoa('Rodrigo', 30);
+//invocando os metodos
+meuObjeto.falar();
+meuObjeto.idade();  
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <updated>2015-02-23T13:55:09-03:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
+
+<p>Coisas que pela lógica deveriam funcionar de uma maneira, mas por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
+
+<!-- more -->
+
+
+<p>Esse post se dedica a tratar de um Gotcha muito comum relacionado a  escopo, que provavelmente você já foi pego por ele, caso não, é hora de explodir sua cabeça.</p>
+
+<pre><code class="javascript gotcha http://en.wikipedia.org/wiki/Gotcha_%28programming%29#Gotchas_in_JavaScript_programming_language Gotcha (programming)]">var func = [];
+for( var i = 0; i &lt; 3; i++ ){
+ func[i] = function () {
+  alert(i);
+ }
+}
+
+func[2]();
+func[0]();
+</code></pre>
+
+<p>Ao executar esse trecho de código nos deparamos com o alert sempre com o valor 3.</p>
+
+<p><strong>Oh God, Help me!</strong></p>
+
+<p>Take it easy boy, vamos entender o que acontece.</p>
+
+<p>O <code>i</code> dentro closure aponta para <code>i</code> global.  Quando chamamos a função <code>func[0]()</code> o <code>i</code> será 3 por que o valor do <code>i</code> global é 3.</p>
+
+<p>Problema semelhante acontece quando colocamos um ajax em um looping, e desejamos usar o índice dentro de seus callbacks. O índice aparece como <code>undefined</code>, veja o exemplo:</p>
+
+<pre><code class="javascript ajax dentro de looping">var users = [1028,885,931];
+for( var i = 0; i &lt; users.length; i+=1) {
+    $.ajax({
+        url: 'http://echo.jsontest.com/users/'+ users[i] ,
+        dataType: "json",
+        success: function( response ) {
+            console.log(users[i]) //undefined
+            console.log( response ); // server response
+        }
+    });
+}
+</code></pre>
+
+<p>Isso acontece porque <code>i</code> é global dentro desse escopo, logo o valor dele é 3 e <code>users[i]</code> aparece como <code>undefined</code> pois a posição 3 não existe.</p>
+
+<p>A solução é simples, devemos isolar cada índice, criando um escopo com uma função anônima auto-executável para que o valor do <code>i</code> seja preservado em cada iteração, veja o exemplo:</p>
+
+<pre><code class="javascript função anônima auto-executável com looping">var func = [];
+for( var i = 0; i &lt; 3; i++ ){
+    func[i] = (function (index) {
+        return function() { 
+            alert(index); 
+        };
+    })(i) // Índice do looping sendo passado como parâmetro
+}
+
+func[0](); // alert 0
+func[1](); // alert 1
+func[2](); //alert 2
+</code></pre>
+
+<p>Exemplo usando com ajax:</p>
+
+<pre><code class="javascript função anônima auto-executável com looping">var func = [];
+var users = [1028,885,931];
+for( var i = 0; i &lt; users.length; i+=1)
+    $.ajax({
+        url: 'http://echo.jsontest.com/users/'+ users[i] ,
+        dataType: "json",
+        success: (function(index) { // função anônima auto-executável
+            return function( response ) {
+                console.log(users[index]) // usuário correto
+                console.log( response ); // resposta
+            };
+        })(i)// Índice do looping sendo passado como parâmetro
+    });
+</code></pre>
+
+<p>O Javascript possui vários gotchas. <a href="http://www.codeproject.com/Articles/182416/A-Collection-of-JavaScript-Gotchas">Jonathan Cardy</a> escreveu um post bem completo, sobre vários gotchas do Javascript, vale uma lida.</p>
+
+<p>Já com relação a closures, existe um post no <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">stackoverflow</a> detalhando sobre o assunto.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
+    <link href="http://www.jsenv.com/blog/2015/02/20/web-messaging/"/>
+    <updated>2015-02-20T17:24:45-02:00</updated>
+    <id>http://www.jsenv.com/blog/2015/02/20/web-messaging</id>
+    <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
+
+<!-- more -->
+
+
+<p>Mensagens <em>cross-document</em> permitem que os scritps possam interagir através destes limites, proporcionando um nível de segurança não muito desenvolvido.
+Sendo assim, é essencial que o desenvolvedor cheque a origem da mensagem antes de efetuar qualquer manipulação.</p>
+
+<p>A tabela abaixo, esclarece forma simples como funciona a <strong><em>Política de Mesma Origem</em></strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th> <strong>URL</strong>                    </th>
+<th style="text-align:center;"> <strong>Mesma origem?</strong> </th>
+<th style="text-align:right;"> <strong>Razão</strong>        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> <a href="http://jsenv.com/about">http://jsenv.com/about</a>     </td>
+<td style="text-align:center;"> Sim             </td>
+<td style="text-align:right;"> mesmo host, protocolo, porta        </td>
+</tr>
+<tr>
+<td> <a href="http://jsenv.com/">http://jsenv.com/</a>          </td>
+<td style="text-align:center;"> Sim             </td>
+<td style="text-align:right;"> mesmo host, protocolo, porta        </td>
+</tr>
+<tr>
+<td> <a href="https://jsenv.com/">https://jsenv.com/</a>         </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> protocolo diferente </td>
+</tr>
+<tr>
+<td> <a href="http://jsenv.com:81">http://jsenv.com:81</a>        </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> porta diferente     </td>
+</tr>
+<tr>
+<td> <a href="http://about.jsenv.com">http://about.jsenv.com</a>     </td>
+<td style="text-align:center;"> Não                </td>
+<td style="text-align:right;"> host diferente      </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>window.postMessage(<em>mensagem</em>, <em>destino</em>, <em>[portas]</em>)</h3>
+
+<p>Esta API permite que seja enviadas mensagens de texto simples, porém podemos enviar objetos transformados em String, por exemplo: <strong><em>JSON.stringify()</em></strong> para o envio e <strong><em>JSON.parse()</em></strong> no recebimento.
+Confira nos exemplos abaixo:</p>
+
+<pre><code class="javascript Conversão de um objeto em string">var obj_message = { 
+    nome: 'JS Env',
+    dominio: 'jsenv.com',
+    atualizado: true },
+    str_message = '';
+/* transformando um objeto em string para envio */
+str_message = JSON.stringify( obj_message );
+</code></pre>
+
+<pre><code class="javascript Conversão de uma string em objeto">/* "{"nome":"JS Env","dominio":"jsenv.com","atualizado":true}" */
+str_message = JSON.parse( obj_message );
+</code></pre>
+
+<h3>Parâmetros:</h3>
+
+<ul>
+<li><strong>mensagem</strong>: é uma string contendo a mensagem.</li>
+<li><strong>destino</strong>: é o endereço para onde a mensagem está sendo enviada. Ele pode adotar 3 tipos de valores:
+
+<ul>
+<li>uma URL absoluta: <a href="http://www.jsenv.com">http://www.jsenv.com</a></li>
+<li>um caractere curinga (*), para receber de qualquer destino.</li>
+<li>ou um valor que restringe o destino da mensagem (/), adotando o a política de mesma origem.</li>
+</ul>
+</li>
+<li><strong>portas</strong>   (opcional):    define um array com as portas válidas para o destino da mensagem.</li>
+</ul>
+
+
+<p>As mensagens podem ser enviadas de iframes para o documento que o carrega (parent) e o processo inverso, do documento (parent) para o iframe, conforme exemplo abaixo:</p>
+
+<pre><code class="javascript">    /* Posta mensagem para o iFrame */
+    var sender = document.getElementsByTagName('iframe')[0];
+    sender.contentWindow.postMessage('{ atualizar: true }', 'http://jsenv.com/');
+</code></pre>
+
+<pre><code class="javascript">    /* Posta a mensagem para o parent do iFrame */
+    var sender = window.parent;
+    sender.postMessage('{ atualizar: true }', 'http://jsenv.com/'); 
+</code></pre>
+
+<h3>Escutando o evento &ldquo;message&rdquo;</h3>
+
+<p>Para receber a mensagem, basta escutarmos o evento padrão da especificação da API Web Messaging: <strong><em>message</em></strong> . Ele deve estar na página que irá manipular a mensagem. Conforme exemplo abaixo:</p>
+
+<pre><code class="javascript">    if ( window.addEventListener ) {
+        window.addEventListener( 'message', show_message, false );
+    } else {
+        window.attachEvent( 'message', show_message );
+    }
+    function show_message ( event ) { ... }
+</code></pre>
+
+<h3>O Evento de mensagem recebido possui os seguintes atributos:</h3>
+
+<ul>
+<li><strong>data</strong>:         O conteúdo da mensagem.</li>
+<li><strong>origin</strong>:       A origem da mensagem.</li>
+<li><strong>source</strong>:       O objeto WindowProxy do destino da mensagem.</li>
+<li><strong>ports</strong>:        Retorna um array com as portas enviadas junto da mensagem.</li>
+<li><strong>lastEventId</strong>:  Retorna o identificador do último evento.</li>
+</ul>
+
+
+<p>Assim, para visualizar cada atributo citado acima, a função <strong><em>show_message</em></strong> fica:</p>
+
+<pre><code class="javascript">    function show_message ( event ) {
+        if ( event.origin == 'http://jsenv.com' ) {     
+            console.log( 'Mensagem      =&gt;', event.data );
+            console.log( 'origem        =&gt;', event.origin );
+            console.log( 'WindowProxy   =&gt;', event.source );
+            console.log( 'Ports             =&gt;', event.ports );
+            console.log( 'LastEventID   =&gt;', event.lastEventId );
+        } else {
+            console.log( 'Origem de envio não autorizada.' );
+        }
+    }
+</code></pre>
+
+<p>Referências:</p>
+
+<ul>
+<li><strong>Wikipedia:</strong> <a href="http://en.wikipedia.org/wiki/Web_Messaging">http://en.wikipedia.org/wiki/Web_Messaging</a></li>
+<li><strong>Livro HTML 5 - Maujor:</strong> <a href="http://livrohtml5.com.br/">http://livrohtml5.com.br/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
