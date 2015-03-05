@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://www.jsenv.com/atom.xml" rel="self"/>
-  <link href="http://www.jsenv.com/"/>
-  <updated>2015-03-04T19:23:52-03:00</updated>
-  <id>http://www.jsenv.com/</id>
+  <link href="http://www.jsenv.com//atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com//"/>
+  <updated>2015-03-05T02:37:13+00:00</updated>
+  <id>http://www.jsenv.com//</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Membros Privados Em Javascript]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript/"/>
-    <updated>2015-02-26T15:04:53-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
+    <link href="http://www.jsenv.com//blog/2015/02/26/membros-privados-em-javascript/"/>
+    <updated>2015-02-26T18:04:53+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
 <p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
@@ -261,9 +261,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Classes Em Javascript]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
-    <updated>2015-02-24T00:01:27-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/24/classes-em-javascript</id>
+    <link href="http://www.jsenv.com//blog/2015/02/24/classes-em-javascript/"/>
+    <updated>2015-02-24T03:01:27+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/24/classes-em-javascript</id>
     <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de início foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
 
 <!-- more -->
@@ -399,9 +399,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Como Sincronizar Um Fork Com Seu Repositório Original]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
-    <updated>2015-02-23T15:06:17-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
+    <link href="http://www.jsenv.com//blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
+    <updated>2015-02-23T18:06:17+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
     <content type="html"><![CDATA[<p>Estamos acostumados a dar um fork em repositórios que contém scripts, aplicações e frameworks para utilizarmos no nosso dia-a-dia, facilitando a criação de nossas aplicações.</p>
 
 <p>Mas, e se o repositório original do qual fizemos o fork se atualizar? Como faremos para sincronizar nosso fork com o repositório original?</p>
@@ -532,9 +532,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
-    <updated>2015-02-23T13:55:09-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <link href="http://www.jsenv.com//blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <updated>2015-02-23T16:55:09+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
     <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
 
 <p>Coisas que pela lógica deveriam funcionar de uma maneira, mas por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
@@ -670,9 +670,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/20/web-messaging/"/>
-    <updated>2015-02-20T17:24:45-02:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/20/web-messaging</id>
+    <link href="http://www.jsenv.com//blog/2015/02/20/web-messaging/"/>
+    <updated>2015-02-20T19:24:45+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/20/web-messaging</id>
     <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
 
 <!-- more -->

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Tips | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://www.jsenv.com/blog/categories/tips/atom.xml" rel="self"/>
-  <link href="http://www.jsenv.com/"/>
-  <updated>2015-03-04T19:23:52-03:00</updated>
-  <id>http://www.jsenv.com/</id>
+  <link href="http://www.jsenv.com//blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://www.jsenv.com//"/>
+  <updated>2015-03-05T02:37:13+00:00</updated>
+  <id>http://www.jsenv.com//</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Membros Privados Em Javascript]]></title>
-    <link href="http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript/"/>
-    <updated>2015-02-26T15:04:53-03:00</updated>
-    <id>http://www.jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
+    <link href="http://www.jsenv.com//blog/2015/02/26/membros-privados-em-javascript/"/>
+    <updated>2015-02-26T18:04:53+00:00</updated>
+    <id>http://www.jsenv.com//blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
 <p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
