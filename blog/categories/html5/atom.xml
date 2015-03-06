@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Html5 | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://www.jsenv.com//blog/categories/html5/atom.xml" rel="self"/>
-  <link href="http://www.jsenv.com//"/>
-  <updated>2015-03-06T11:10:32-03:00</updated>
-  <id>http://www.jsenv.com//</id>
+  <link href="http://jsenv.com//blog/categories/html5/atom.xml" rel="self"/>
+  <link href="http://jsenv.com//"/>
+  <updated>2015-03-06T11:22:36-03:00</updated>
+  <id>http://jsenv.com//</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
-    <link href="http://www.jsenv.com//blog/2015/02/20/web-messaging/"/>
+    <link href="http://jsenv.com//blog/2015/02/20/web-messaging/"/>
     <updated>2015-02-20T17:24:45-02:00</updated>
-    <id>http://www.jsenv.com//blog/2015/02/20/web-messaging</id>
+    <id>http://jsenv.com//blog/2015/02/20/web-messaging</id>
     <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
 
 <!-- more -->
