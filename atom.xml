@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://jsenv.com//atom.xml" rel="self"/>
-  <link href="http://jsenv.com//"/>
-  <updated>2015-03-13T21:42:38+00:00</updated>
-  <id>http://jsenv.com//</id>
+  <link href="http://jsenv.com/atom.xml" rel="self"/>
+  <link href="http://jsenv.com/"/>
+  <updated>2015-03-15T03:45:16+00:00</updated>
+  <id>http://jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Usando O Console Parte 1 - Console API]]></title>
-    <link href="http://jsenv.com//blog/2015/03/08/usando-o-console-parte-1-console-api/"/>
+    <link href="http://jsenv.com/blog/2015/03/08/usando-o-console-parte-1-console-api/"/>
     <updated>2015-03-08T03:41:33+00:00</updated>
-    <id>http://jsenv.com//blog/2015/03/08/usando-o-console-parte-1-console-api</id>
+    <id>http://jsenv.com/blog/2015/03/08/usando-o-console-parte-1-console-api</id>
     <content type="html"><![CDATA[<p><a href="https://developer.chrome.com/devtools/docs/console">Console</a> é uma ferramenta sagrada para Front-enders, usada para debugar, procurar por erros, gerar logs, fazer testes de performance, teste de asserção, entre outras coisas que nos ajudam a fazer análises a aplicação do lado do cliente.</p>
 
 <p>Esse poste tem o objetivo de mostrar algumas dicas que vão facilitar suas análises e debug da aplicação especificamente para o <strong>Google Chrome.</strong></p>
@@ -35,7 +35,7 @@
 
 <p>Para ter acesso ao Console use as teclas de atalho <strong>Ctrl + Shift + j</strong> no Windows/Linux ou <strong>Command + Option + j</strong> para Mac.</p>
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/console.jpg" alt="Console" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/console.jpg" alt="Console" /></p>
 
 <h3>Logando mensagens</h3>
 
@@ -54,7 +54,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-mensagem.jpg" alt="Logando mensagens" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-mensagem.jpg" alt="Logando mensagens" /></p>
 
 <p>Podemos usar curingas para concatenar com variáveis de forma elegante:</p>
 
@@ -105,7 +105,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-concat-string.jpg" alt="Concatenando" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-concat-string.jpg" alt="Concatenando" /></p>
 
 <p><strong>Concatenando com objetos:</strong></p>
 
@@ -120,7 +120,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-objetos.jpg" alt="Logando objetos" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-objetos.jpg" alt="Logando objetos" /></p>
 
 <p><strong>Estilizando as mensagens:</strong></p>
 
@@ -129,7 +129,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-estilizado.jpg" alt="Logando com estilo" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-estilizado.jpg" alt="Logando com estilo" /></p>
 
 <h4>Exibir mensagens de alerta - <em>console.warn(object [, object, &hellip;])</em></h4>
 
@@ -138,7 +138,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-warn.jpg" alt="Logando mensagem de warn" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-warn.jpg" alt="Logando mensagem de warn" /></p>
 
 <h4>Agrupando logs - <em>console.group(object [, object, &hellip;])</em>, <em>console.groupEnd()</em></h4>
 
@@ -163,7 +163,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-group.jpg" alt="Agrupando" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-group.jpg" alt="Agrupando" /></p>
 
 <h4>Agrupando com  groupCollapsed -  <em>console.groupCollapsed(object [, object, &hellip;])</em></h4>
 
@@ -188,7 +188,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/log-group-groupCollapsed.gif" alt="Agrupando com collapsed" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/log-group-groupCollapsed.gif" alt="Agrupando com collapsed" /></p>
 
 <h3>Testes</h3>
 
@@ -207,7 +207,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-assert.jpg" alt="Testes com assert" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-assert.jpg" alt="Testes com assert" /></p>
 
 <h4>Contador - <em>console.count(label)</em></h4>
 
@@ -228,7 +228,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/log-group-count.gif" alt="Count" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/log-group-count.gif" alt="Count" /></p>
 
 <h4>Calculando o tempo - <em>console.time(label) e console.timeEnd(label)</em></h4>
 
@@ -251,7 +251,7 @@
 
 <p>Contabilizando o tempo de execução de trechos de códigos, onde cada label está relacionada a um timer.</p>
 
-<p><img src="http://jsenv.com//post_images_content/usando_o_console_parte_um/logando-timer.jpg" alt="Count" /></p>
+<p><img src="http://jsenv.com/post_images_content/usando_o_console_parte_um/logando-timer.jpg" alt="Count" /></p>
 
 <p>Console API possui vários métodos, tire um tempinho para ler a <a href="https://developer.chrome.com/devtools/docs/console-api">documentação completa</a>.</p>
 
@@ -266,9 +266,9 @@
   
   <entry>
     <title type="html"><![CDATA[Membros Privados Em Javascript]]></title>
-    <link href="http://jsenv.com//blog/2015/02/26/membros-privados-em-javascript/"/>
+    <link href="http://jsenv.com/blog/2015/02/26/membros-privados-em-javascript/"/>
     <updated>2015-02-26T18:04:53+00:00</updated>
-    <id>http://jsenv.com//blog/2015/02/26/membros-privados-em-javascript</id>
+    <id>http://jsenv.com/blog/2015/02/26/membros-privados-em-javascript</id>
     <content type="html"><![CDATA[<p>Quem nunca se perguntou: <em>&ldquo;Como faço para deixar minhas variáveis e métodos privados com Javascript?&rdquo;</em>. Pois bem, tentarei de uma forma bem pragmática mostrar como fazemos isso.</p>
 
 <p>Algumas pessoas acreditam que o Javascript não tem a capacidade de <em>&ldquo;esconder informações&rdquo;</em>, porque <code>object</code> não pode ter variáveis e métodos privados. Mas isso não passa de um mal-entendido.</p>
@@ -512,9 +512,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Classes Em Javascript]]></title>
-    <link href="http://jsenv.com//blog/2015/02/24/classes-em-javascript/"/>
+    <link href="http://jsenv.com/blog/2015/02/24/classes-em-javascript/"/>
     <updated>2015-02-24T03:01:27+00:00</updated>
-    <id>http://jsenv.com//blog/2015/02/24/classes-em-javascript</id>
+    <id>http://jsenv.com/blog/2015/02/24/classes-em-javascript</id>
     <content type="html"><![CDATA[<p>Quando comecei a desenvolver em JavaScript um dos primeiros conflitos que tive com a linguagem foi o famoso caso das classes, na faculdade eu havia aprendido os conceitos de orientação a objeto e aplicado esses conhecimentos somente nas linguagens Java e C#, de início foi difícil compreender esse mundo novo do JavaScript, afinal tanto em Java como em C# não se tem os protótipos, por este motivo quis escrever este post, para aqueles que estão iniciando possam  compreender melhor o funcionamento da linguagem , mas vamos por partes, para compreender classes em JavaScript primeiro é necessário compreender o que é protótipos.</p>
 
 <!-- more -->
@@ -650,9 +650,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Como Sincronizar Um Fork Com Seu Repositório Original]]></title>
-    <link href="http://jsenv.com//blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
+    <link href="http://jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original/"/>
     <updated>2015-02-23T18:06:17+00:00</updated>
-    <id>http://jsenv.com//blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
+    <id>http://jsenv.com/blog/2015/02/23/como-sincronizar-um-fork-com-seu-repositorio-original</id>
     <content type="html"><![CDATA[<p>Estamos acostumados a dar um fork em repositórios que contém scripts, aplicações e frameworks para utilizarmos no nosso dia-a-dia, facilitando a criação de nossas aplicações.</p>
 
 <p>Mas, e se o repositório original do qual fizemos o fork se atualizar? Como faremos para sincronizar nosso fork com o repositório original?</p>
@@ -783,9 +783,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Looping Com Função Anônima Auto-executável]]></title>
-    <link href="http://jsenv.com//blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
+    <link href="http://jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel/"/>
     <updated>2015-02-23T16:55:09+00:00</updated>
-    <id>http://jsenv.com//blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
+    <id>http://jsenv.com/blog/2015/02/23/looping-com-funcao-anonima-auto-executavel</id>
     <content type="html"><![CDATA[<p>Javascript em alguns momentos é uma linguagem muito traiçoeira, prega peças que consomem horas de debug e paciência. São os chamados <a href="http://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotchas</a>, na tradução literal, <em>&ldquo;pegadinhas&rdquo;</em>.</p>
 
 <p>Coisas que pela lógica deveriam funcionar de uma maneira, mas por características de um sistema ou alguma linguagem programação funcionam de maneira inesperada.</p>
@@ -921,9 +921,9 @@ Essa é uma propriedade muito poderosa da linguagem Javascript!</p>
   
   <entry>
     <title type="html"><![CDATA[Web Messaging - API HTML 5]]></title>
-    <link href="http://jsenv.com//blog/2015/02/20/web-messaging/"/>
+    <link href="http://jsenv.com/blog/2015/02/20/web-messaging/"/>
     <updated>2015-02-20T19:24:45+00:00</updated>
-    <id>http://jsenv.com//blog/2015/02/20/web-messaging</id>
+    <id>http://jsenv.com/blog/2015/02/20/web-messaging</id>
     <content type="html"><![CDATA[<p><em>Web Messaging</em> ou <em>Cross-document Messaging</em> é uma API introduzida nas especificações da HTML 5 que permite a comunicação entre documentos de origens diferentes.</p>
 
 <!-- more -->

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Console | JS env - Ambiente dedicado a assuntos sobre Javascript]]></title>
-  <link href="http://jsenv.com//blog/categories/console/atom.xml" rel="self"/>
-  <link href="http://jsenv.com//"/>
-  <updated>2015-03-13T21:42:38+00:00</updated>
-  <id>http://jsenv.com//</id>
+  <link href="http://jsenv.com/blog/categories/console/atom.xml" rel="self"/>
+  <link href="http://jsenv.com/"/>
+  <updated>2015-03-15T03:45:16+00:00</updated>
+  <id>http://jsenv.com/</id>
   <author>
     <name><![CDATA[JS env team]]></name>
     <email><![CDATA[team.jsenv@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Usando O Console Parte 1 - Console API]]></title>
-    <link href="http://jsenv.com//blog/2015/03/08/usando-o-console-parte-1-console-api/"/>
+    <link href="http://jsenv.com/blog/2015/03/08/usando-o-console-parte-1-console-api/"/>
     <updated>2015-03-08T03:41:33+00:00</updated>
-    <id>http://jsenv.com//blog/2015/03/08/usando-o-console-parte-1-console-api</id>
+    <id>http://jsenv.com/blog/2015/03/08/usando-o-console-parte-1-console-api</id>
     <content type="html"><![CDATA[<p><a href="https://developer.chrome.com/devtools/docs/console">Console</a> é uma ferramenta sagrada para Front-enders, usada para debugar, procurar por erros, gerar logs, fazer testes de performance, teste de asserção, entre outras coisas que nos ajudam a fazer análises a aplicação do lado do cliente.</p>
 
 <p>Esse poste tem o objetivo de mostrar algumas dicas que vão facilitar suas análises e debug da aplicação especificamente para o <strong>Google Chrome.</strong></p>
